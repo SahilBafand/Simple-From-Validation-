@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Validation</title>
+</head>
+
+<body>
+ <h2>Form Validation Using HTML, CSS and JavaScript</h2><br>
+<div class="form-container">
+  <form action="" onsubmit="return Validateform()">
+    <h1>LogIn</h1><br><br>
+    <label for="" id="lbl">UserName</label><br>
+    <input type="text" id="username" placeholder="UserName"><br>
+    <p id="userError"></p><br>
+    <label for="" id="lbl">Password</label><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <p id="passError"></p><br>
+    <button type="submit">LogIn</button>
+  </form>
+</div>
+<script>
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let flag = 1;
+  function Validateform(){
+    if(username.value == ""){
+      document.getElementById("userError").innerHTML = "Error: UserName is empty";
+      flag = 0;
+    }else if(username.value.length < 3){
+      document.getElementById("userError").innerHTML = "UserName should be at least 3 characters";
+      flag = 0;
+    }else{
+      document.getElementById("userError").innerHTML = "";
+      flag = 1;
+    }
+    if(password.value == ""){
+      document.getElementById("passError").innerHTML = "Error: Password is empty";
+      flag = 0;
+    }else if(password.value.length < 6){
+      document.getElementById("passError").innerHTML = "Password should be at least 6 characters";
+      flag = 0;
+    }else{
+      document.getElementById("passError").innerHTML = "";
+      flag = 1;
+    }if(flag){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
+</body>
+<style>
+  body{
+    background: deepskyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .form-container{
+    background: #fff;
+    min-width: 300px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px black;
+  }
+.form-container h1{
+    color: deepskyblue;
+   
+  }
+  input{
+    border: 1px solid grey;
+    outline: none;
+    width: 200px;
+    padding: 3.5px;
+    border-radius: 5px;
+  }
+  button{
+    border: 1px solid deepskyblue;
+    outline: none;
+    width: 200px;
+    padding: 3.5px;
+    border-radius: 5px;
+    background: deepskyblue;
+    color:white;
+    padding: 5px;
+  }
+  #lbl{
+    font-family: monospace;
+    font-size: 1rem;
+  }
+  #userError, #passError{
+    color:red;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  h2{
+    color: white;
+    font-family: serif;
+    text-align: center;
+    text-shadow: 3px 3px 5px #0114E3;
+  }
+</style>
+</html>
